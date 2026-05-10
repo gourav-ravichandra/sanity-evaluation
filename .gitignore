@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Next.js (web)
+web/.next/
+web/out/
+
+# Sanity Studio
+studio/dist/
+studio/.sanity/
+
+# Env (never commit secrets)
+.env
+.env.*
+!.env.example
+web/.env.local
+studio/.env
+
+# OS / tooling
+.DS_Store
+*.pem
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
