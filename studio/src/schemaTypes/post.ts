@@ -42,7 +42,7 @@ export const postType = defineType({
     defineField({
       name: 'verticals',
       title: 'Vertical tags',
-      description: 'Optional filters (Lending, Travel, etc.)',
+      description: 'Optional (max 3). Used for filters on the site.',
       type: 'array',
       of: [
         {
@@ -51,15 +51,23 @@ export const postType = defineType({
             list: [
               { title: 'Lending', value: 'lending' },
               { title: 'Travel', value: 'travel' },
-              { title: 'ECE', value: 'ece' },
-              { title: 'SME / Business', value: 'sme' },
-              { title: 'Accountants', value: 'accountants' },
-              { title: 'Brand', value: 'brand' },
+              { title: 'SME', value: 'sme' },
             ],
             layout: 'dropdown',
           },
         },
       ],
+      validation: (Rule) => Rule.max(3),
+    }),
+    defineField({
+      name: 'whitepaperFile',
+      title: 'Whitepaper PDF',
+      description: 'Upload the PDF when this post is a whitepaper (section = Whitepapers).',
+      type: 'file',
+      options: {
+        accept: 'application/pdf',
+      },
+      hidden: ({ document }) => document?.resourceSection !== 'whitepapers',
     }),
     defineField({
       name: 'publishedAt',
