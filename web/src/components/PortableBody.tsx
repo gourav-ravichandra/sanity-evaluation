@@ -1,7 +1,7 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
 
-const components: PortableTextComponents = {
+const defaultComponents: PortableTextComponents = {
   block: {
     h2: ({ children }) => (
       <h2 className="mt-10 text-2xl font-semibold tracking-tight">{children}</h2>
@@ -27,11 +27,26 @@ const components: PortableTextComponents = {
   },
 }
 
-type Props = {
-  value: PortableTextBlock[] | null | undefined
+const caseStudyComponents: PortableTextComponents = {
+  block: {
+    h2: ({ children }) => <h2 className="cs-prose-h2">{children}</h2>,
+    h3: ({ children }) => <h3 className="cs-prose-h3">{children}</h3>,
+    normal: ({ children }) => <p className="cs-prose-p">{children}</p>,
+  },
+  list: {
+    bullet: ({ children }) => <ul className="cs-prose-ul">{children}</ul>,
+    number: ({ children }) => <ol className="cs-prose-ol">{children}</ol>,
+  },
 }
 
-export function PortableBody({ value }: Props) {
+type Props = {
+  value: PortableTextBlock[] | null | undefined
+  /** Richer typography for Modulr-style case study landing pages (`/p/...`). */
+  variant?: 'default' | 'caseStudy'
+}
+
+export function PortableBody({ value, variant = 'default' }: Props) {
   if (!value?.length) return null
+  const components = variant === 'caseStudy' ? caseStudyComponents : defaultComponents
   return <PortableText value={value} components={components} />
 }

@@ -66,8 +66,15 @@ export const LANDING_PAGE_QUERY = defineQuery(`
     _id,
     title,
     description,
+    eyebrow,
     "slug": slug.current,
+    clientLogo,
     mainImage,
+    stats[]{ value, label },
+    featuredQuote { quote, attribution },
+    productsUsed,
+    ctaLabel,
+    ctaUrl,
     body
   }
 `)

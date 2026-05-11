@@ -1,0 +1,353 @@
+/* Modulr-inspired case study layout (landing pages /p/...) — reference: modulrfinance.com case studies */
+
+.cs-root {
+  --cs-navy: #001a4d;
+  --cs-navy-mid: #003380;
+  --cs-blue: #006ff7;
+  --cs-yellow: #ffd524;
+  --cs-cream: #f4f6fb;
+  min-height: 100vh;
+  background: var(--white, #fff);
+}
+
+.cs-topbar {
+  border-bottom: 1px solid var(--border, #e2e6ed);
+  background: #fff;
+  padding: 14px clamp(20px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cs-back {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue, #006ff7);
+  text-decoration: none;
+}
+.cs-back:hover {
+  text-decoration: underline;
+}
+
+.cs-brand-strip {
+  height: 4px;
+  background: linear-gradient(90deg, var(--cs-yellow, #ffd524) 0%, var(--cs-yellow, #ffd524) 18%, var(--cs-blue, #006ff7) 18%, var(--cs-navy, #001a4d) 100%);
+}
+
+/* ── Hero ───────────────────────────────────────────── */
+.cs-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    var(--cs-navy) 0%,
+    var(--cs-navy-mid) 38%,
+    var(--cs-blue) 78%,
+    #0088ff 100%
+  );
+  color: #fff;
+  padding: clamp(32px, 6vw, 72px) clamp(20px, 4vw, 56px) clamp(40px, 7vw, 80px);
+}
+
+.cs-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: min(55vw, 520px);
+  height: min(55vw, 520px);
+  background: radial-gradient(circle, rgba(255, 213, 36, 0.22) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.cs-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--cs-yellow) 0%, rgba(255, 213, 36, 0.35) 40%, transparent 100%);
+  opacity: 0.9;
+}
+
+.cs-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+}
+
+.cs-client-logo {
+  position: relative;
+  width: 120px;
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+.cs-client-logo img {
+  object-fit: contain;
+  object-position: left center;
+}
+
+.cs-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 6px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.cs-hero h1 {
+  font-family: var(--font-display), 'Inter Tight', Inter, sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin: 0 0 20px;
+  color: #fff;
+  max-width: 18ch;
+}
+
+.cs-lede {
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.cs-hero-media {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(28px, 5vw, 48px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.cs-hero-media img {
+  object-fit: cover;
+}
+
+/* ── Stats ──────────────────────────────────────────── */
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(16px, 3vw, 24px);
+  padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 48px);
+  background: linear-gradient(180deg, #fff 0%, var(--cs-cream) 100%);
+  border-bottom: 1px solid var(--border, #e2e6ed);
+}
+
+.cs-stat-card {
+  background: #fff;
+  border: 1px solid var(--border, #e2e6ed);
+  border-radius: 14px;
+  padding: 22px 20px 24px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 111, 247, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 26, 77, 0.1);
+}
+
+.cs-stat-value {
+  font-family: var(--font-display), 'Inter Tight', Inter, sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--cs-blue);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.cs-stat-card:nth-child(3n + 2) .cs-stat-value {
+  color: var(--cs-navy);
+}
+.cs-stat-card:nth-child(3n + 3) .cs-stat-value {
+  color: #0a6b5f;
+}
+
+.cs-stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--lead, #78808f);
+  line-height: 1.45;
+}
+
+/* ── Quote band ─────────────────────────────────────── */
+.cs-quote-wrap {
+  padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 48px);
+  background: linear-gradient(135deg, var(--cs-navy) 0%, #002a66 50%, var(--cs-navy-mid) 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-quote-wrap::before {
+  content: '“';
+  position: absolute;
+  top: 0.15em;
+  left: clamp(12px, 3vw, 32px);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(4rem, 14vw, 8rem);
+  line-height: 1;
+  color: var(--cs-yellow);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.cs-quote {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.55;
+  font-weight: 500;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.cs-quote footer {
+  margin-top: 22px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--cs-yellow);
+  opacity: 0.95;
+}
+
+/* ── Body + prose ───────────────────────────────────── */
+.cs-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 40px) clamp(48px, 8vw, 96px);
+}
+
+.cs-prose-h2 {
+  font-family: var(--font-display), 'Inter Tight', Inter, sans-serif;
+  font-size: clamp(1.5rem, 2.8vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--cs-navy);
+  margin: 2.5rem 0 1rem;
+  line-height: 1.2;
+}
+
+.cs-prose-h2:first-child {
+  margin-top: 0;
+}
+
+.cs-prose-h3 {
+  font-family: var(--font-display), 'Inter Tight', Inter, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text, #212529);
+  margin: 2rem 0 0.75rem;
+}
+
+.cs-prose-p {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text, #212529);
+}
+
+.cs-prose-ul,
+.cs-prose-ol {
+  margin-top: 1rem;
+  padding-left: 1.35rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text, #212529);
+}
+
+.cs-prose-ul {
+  list-style: disc;
+}
+
+.cs-prose-ol {
+  list-style: decimal;
+}
+
+/* ── Products ───────────────────────────────────────── */
+.cs-products {
+  padding: 0 clamp(20px, 4vw, 48px) clamp(40px, 6vw, 64px);
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.cs-products h2 {
+  font-family: var(--font-display), 'Inter Tight', Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lead, #78808f);
+  margin: 0 0 14px;
+}
+
+.cs-product-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cs-pill {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(0, 111, 247, 0.08);
+  color: var(--cs-blue);
+  border: 1px solid rgba(0, 111, 247, 0.2);
+}
+
+/* ── CTA ────────────────────────────────────────────── */
+.cs-cta {
+  margin: 0 clamp(20px, 4vw, 48px) clamp(48px, 8vw, 80px);
+  padding: clamp(28px, 4vw, 40px);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--cs-navy) 0%, var(--cs-blue) 100%);
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(0, 26, 77, 0.25);
+}
+
+.cs-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--font-display), 'Inter Tight', Inter, sans-serif;
+  letter-spacing: 0.02em;
+  color: var(--cs-navy);
+  background: var(--cs-yellow);
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cs-cta a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
