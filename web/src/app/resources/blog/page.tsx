@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
+import { ResourceVerticalPills } from '@/components/modulr/ResourceVerticalPills'
 import { SanityResourcePosts } from '@/components/modulr/SanityResourcePosts'
-import { VerticalPills } from '@/components/modulr/VerticalPills'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -173,7 +173,7 @@ export default async function BlogResourcePage() {
         </div>
       </div>
 
-      <VerticalPills label="Filter" />
+      <ResourceVerticalPills section="blog" label="Filter" />
 
       <div style={{ padding: '28px 40px 60px', background: 'var(--white)' }}>
         <div style={{ marginBottom: 24 }}>

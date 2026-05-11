@@ -17,5 +17,20 @@ export const resolve: PresentationPluginOptions['resolve'] = {
         ],
       }),
     }),
+    landingPage: defineLocations({
+      select: {
+        title: 'title',
+        slug: 'slug.current',
+      },
+      resolve: (doc) => ({
+        locations: [
+          {
+            title: doc?.title || 'Untitled',
+            href: `/p/${doc?.slug}`,
+          },
+          { title: 'Resource Centre home', href: '/' },
+        ],
+      }),
+    }),
   },
 }

@@ -102,7 +102,8 @@ export default function HomePage() {
           <Link href="/posts" style={{ color: 'var(--blue)', fontWeight: 600 }}>
             All posts
           </Link>
-          .
+          . In Sanity Studio, create a <strong>Landing page</strong> document to publish custom pages
+          at <code style={{ fontSize: 14 }}>/p/your-slug</code>.
         </p>
       </header>
 

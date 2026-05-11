@@ -52,3 +52,28 @@ export const POST_SLUGS_QUERY = defineQuery(`
     "slug": slug.current
   }
 `)
+
+/** One value per matching post: its verticals array (or null). Dedupe on the client. */
+export const POST_VERTICALS_BY_SECTION_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current) && (
+    ($section == "blog" && (!defined(resourceSection) || resourceSection == "blog")) ||
+    ($section != "blog" && resourceSection == $section)
+  )].verticals
+`)
+
+export const LANDING_PAGE_QUERY = defineQuery(`
+  *[_type == "landingPage" && slug.current == $slug][0] {
+    _id,
+    title,
+    description,
+    "slug": slug.current,
+    mainImage,
+    body
+  }
+`)
+
+export const LANDING_PAGE_SLUGS_QUERY = defineQuery(`
+  *[_type == "landingPage" && defined(slug.current)]{
+    "slug": slug.current
+  }
+`)
